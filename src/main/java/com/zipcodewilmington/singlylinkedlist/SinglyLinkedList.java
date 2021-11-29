@@ -55,9 +55,9 @@ public class SinglyLinkedList<T> implements Comparable {
         return this.find(valueToContain) >= 0;
     }
 
-    private Integer find(T valueToFind) {
+    public Integer find(T valueToFind) {
         Node currentNode = this.head;
-        int index = 0;
+        Integer index = 0;
 //        if(this.head == null){
 //            what do I do if the list is empty
 //        }
@@ -71,6 +71,65 @@ public class SinglyLinkedList<T> implements Comparable {
         return -1;
     }
 
+    public Integer sizeOfList() {
+        Integer count = 0;
+        Node currentNode = this.head;
+        while (currentNode != null) {
+            count++;
+            currentNode = currentNode.next;
+        }
+        return count;
+    }
 
+    public T get(Integer index) {
+        Node currentNode = this.head;
 
+        if(index >= sizeOfList()) {
+            return null;
+        }
+        if(index == sizeOfList()) {
+            return tail.info;
+        }
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode.info;
+    }
+
+    public SinglyLinkedList<T> copy() {
+        SinglyLinkedList<T> listToCopy = new SinglyLinkedList<T>();
+        Node currentNode = this.head;
+        while(currentNode !=null) {
+            listToCopy.addNode(currentNode.info);
+            currentNode = currentNode.next;
+        }
+        return listToCopy;
+    }
+
+    public void sort() {
+        Node currentNode = this.head;
+        for (int i = 0; i < sizeOfList(); i++) {
+            currentNode = this.head;
+            while (currentNode.next != null) {
+                Node next = currentNode.next;
+                if ((Integer) currentNode.info > (Integer) next.info) {
+                    T holder = currentNode.info;
+                    currentNode.info = next.info;
+                    next.info = holder;
+                }
+                currentNode = currentNode.next;
+            } //sorts form least ot greatest, reverse it if you want greatest to least
+        }
+    }
+
+    //optional
+
+    public void reverse() {
+        SinglyLinkedList<T> reversedList = new SinglyLinkedList<T>();
+        Integer i = sizeOfList() - 1;
+        while (1 >= 0) {
+            reversedList.addNode(get(i));
+            i--;
+        }
+    }
 }
