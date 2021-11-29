@@ -21,4 +21,16 @@ public class SinglyLinkedList<T> implements Comparable {
     public Node head = null;
     public Node tail = null;
 
+    public void addNode(T info) {
+        Node nodeToAdd = new Node(info);
+
+        if (head == null) {
+            head = nodeToAdd;
+        } else {
+            tail.next = nodeToAdd;
+        }
+        tail = nodeToAdd;
+    }
+
+    public void removeNode
 }
