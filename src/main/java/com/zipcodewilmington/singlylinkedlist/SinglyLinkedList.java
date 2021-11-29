@@ -125,11 +125,18 @@ public class SinglyLinkedList<T> implements Comparable {
     //optional
 
     public void reverse() {
-        SinglyLinkedList<T> reversedList = new SinglyLinkedList<T>();
-        Integer i = sizeOfList() - 1;
-        while (1 >= 0) {
-            reversedList.addNode(get(i));
-            i--;
+        Node first = this.head;
+        Node previousNode = null;
+        Node currentNode = null;
+
+        while(first != null) {
+            currentNode = first;
+            first = first.next;
+
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            head = currentNode;
+
         }
     }
 }
