@@ -58,8 +58,8 @@ public class SinglyLinkedListTest<T> {
         list.addNode("Apple");
         list.addNode("Orange");
         list.addNode("Golden Kiwi");
-        //when
         Integer expected = 4;
+        //when
         Integer actual = list.find("Golden Kiwi");
         //then
         Assert.assertEquals(expected, actual);
@@ -81,15 +81,16 @@ public class SinglyLinkedListTest<T> {
 
     @Test
     public void testGet(){
+        //given
         SinglyLinkedList<Integer> testList = new SinglyLinkedList<Integer>();
         testList.addNode(11);
         testList.addNode(45);
         testList.addNode(775);
         testList.addNode(1253);
-
         Integer expected = 11;
+        //when
         Integer actual = testList.get(0);
-
+        //then
         Assert.assertEquals(expected, actual);
     }
 
